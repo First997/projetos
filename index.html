@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard - Vinicius Lima</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- ícones simples (feitos em SVG inline) e fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <header class="topbar">
+    <div class="brand">Vinicius <span class="accent">Lima</span></div>
+
+    <div class="controls">
+      <button id="toggleTheme" class="icon-btn" title="Alternar tema">🌙</button>
+      <button id="btnFetchGit" class="btn small">Carregar GitHub</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro card">
+      <div>
+        <h1>Dashboard de Dados</h1>
+        <p class="muted">Visualize métricas do portfólio — projetos, evolução de habilidades e linguagens.</p>
+      </div>
+
+      <div class="quick">
+        <div class="stat">
+          <div class="stat-value" id="gh-repos">--</div>
+          <div class="stat-label">Repositórios</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="gh-stars">--</div>
+          <div class="stat-label">Stars</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="gh-langs">--</div>
+          <div class="stat-label">Linguagens</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters card">
+      <label for="filterYear">Filtrar por ano</label>
+      <select id="filterYear">
+        <option value="all">Todos</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+      </select>
+
+      <div class="export-hint">Clique no botão de download ao lado de cada gráfico para exportar como PNG.</div>
+    </section>
+
+    <section class="grid">
+      <article class="card chart-card">
+        <div class="card-head">
+          <h3>Projetos por Ano</h3>
+          <div>
+            <button class="btn export" data-chart="chartProjetos">⬇ Exportar</button>
+          </div>
+        </div>
+        <canvas id="chartProjetos"></canvas>
+      </article>
+
+      <article class="card chart-card">
+        <div class="card-head">
+          <h3>Evolução de Habilidades</h3>
+          <div>
+            <button class="btn export" data-chart="chartHabilidades">⬇ Exportar</button>
+          </div>
+        </div>
+        <canvas id="chartHabilidades"></canvas>
+      </article>
+
+      <article class="card chart-card">
+        <div class="card-head">
+          <h3>Linguagens / Uso</h3>
+          <div>
+            <button class="btn export" data-chart="chartLinguagens">⬇ Exportar</button>
+          </div>
+        </div>
+        <canvas id="chartLinguagens"></canvas>
+      </article>
+
+      <article class="card chart-card">
+        <div class="card-head">
+          <h3>Radar de Competências</h3>
+          <div>
+            <button class="btn export" data-chart="chartRadar">⬇ Exportar</button>
+          </div>
+        </div>
+        <canvas id="chartRadar"></canvas>
+      </article>
+    </section>
+
+    <section class="card actions">
+      <h3>Ações rápidas</h3>
+      <div class="action-row">
+        <button id="btnDownloadAll" class="btn">Exportar todos os gráficos</button>
+        <button id="btnReset" class="btn ghost">Resetar filtros</button>
+      </div>
+
+      <p class="muted small"></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>Desenvolvido por <strong>Vinicius Lima</strong> • 2025</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
